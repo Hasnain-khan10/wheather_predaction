@@ -1,3 +1,22 @@
+import sys
+import os
+from pathlib import Path
+
+# Add project root directory to Python path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+sys.path.append(str(ROOT_DIR))
+
+import streamlit as st
+import streamlit.components.v1 as components
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+import joblib
+import shap
+import requests
+from datetime import datetime, timedelta
+from sklearn.linear_model import Ridge
+from backend.config.settings import settings
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
