@@ -1,0 +1,35 @@
+name: Hourly Feature Pipeline
+
+on:
+  schedule:
+    # Har ghante minute 0 par automatic chalega
+    - cron: '0 * * * *'
+  workflow_dispatch: # GitHub UI se manually run karne ke liye
+
+jobs:
+  run-feature-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run Feature Pipeline
+        env:
+          AQICN_API_KEY: ${{ secrets.AQICN_API_KEY }}
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+          HOPSWORKS_PROJECT_NAME: ${{ secrets.HOPSWORKS_PROJECT_NAME }}
+          HOPSWORKS_HOST: "eu-west.cloud.hopsworks.ai"
+        run: |
+          python -m backend.src.pipelines.feature_pipeline

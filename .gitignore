@@ -1,0 +1,51 @@
+# Environment variables (Never push secrets)
+.env
+.env.local
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Local Model Artifacts & Cached Data
+model_dir/
+data/*.parquet
+data/feature_store.parquet
+
+# OS specific files
+.DS_Store
+Thumbs.db# Environment variables (Never push secrets)
+.env
+.env.local
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Local Model Artifacts & Cached Data
+model_dir/
+data/*.parquet
+data/feature_store.parquet
+
+# OS specific files
+.DS_Store
+Thumbs.db
